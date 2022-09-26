@@ -1,17 +1,25 @@
 import React from 'react'
+import Rating from '../components/Rating'
+import { Link } from 'react-router-dom'
 
-function ProductCard({props}) {
+function ProductCard({ props }) {
     return (
-        <div>
+        <div className='grid lg:grid-cols-3 gap-4 flex items-center justify-center mt-6'>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                <Link to={`/product/${props._id}`}>
+                    <figure><img src={props.image} alt="" /></figure>
+                </Link>
                 <div className="card-body">
-                    <h2 className="card-title">{props.name}</h2>
-                    <p>{props.description}</p>
-                    <div className="card-actions justify-end">
-                        <p className='text-xl font-bold text-start'>{props.price}$</p>
-                        <button className="btn btn-primary">Add to cart</button>
-                    </div>
+                    <Link to={`/product/${props._id}`}>
+                        <h2 className="card-title">{props.name}</h2>
+                        <p>{props.description}</p>
+                        {/* <h3 className='my-2'>{props.rating} from {props.numReviews} reviews</h3> */}
+                        <Rating value={props.rating} text={props.numReviews} />
+                        <div className="card-actions justify-end">
+                            <p className='text-xl font-bold text-start'>{props.price}$</p>
+                            <button className="btn btn-primary">Add to cart</button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

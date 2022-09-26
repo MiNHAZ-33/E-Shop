@@ -1,19 +1,22 @@
 
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Navbar from './Home/Navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Home/Home';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
   return (
-      <BrowserRouter>
-         <Navbar/>
-        <Routes>
-            <Route path='/' element={<Home/>}/>
-        </Routes>
-      </BrowserRouter>
-     
-  
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route exact path='/' element={<HomeScreen />} />
+        <Route path='/product/:id' element={<ProductScreen />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
