@@ -1,0 +1,33 @@
+{
+  "name": "multivendor-e-shop",
+  "version": "1.0.0",
+  "description": "MERN E-Commerce App",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node Backend/server",
+    "server": "nodemon Backend/server",
+    "client": "npm start --prefix FrontEnd",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiNHAZ-33/E-Shop.git"
+  },
+  "author": "minhaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiNHAZ-33/E-Shop/issues"
+  },
+  "homepage": "https://github.com/MiNHAZ-33/E-Shop#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "nodemon": "^2.0.20"
+  }
+}

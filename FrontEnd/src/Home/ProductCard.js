@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function ProductCard({ props }) {
     return (
-        <div className='grid lg:grid-cols-3 gap-4 flex items-center justify-center mt-6'>
+        <div className='grid lg:grid-cols-3 gap-4 items-center justify-center mt-6'>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
                 <Link to={`/product/${props._id}`}>
                     <figure><img src={props.image} alt="" /></figure>
