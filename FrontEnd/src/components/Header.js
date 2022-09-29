@@ -5,7 +5,7 @@ function Header() {
     return (
         <div className="container navbar bg-base-100">
             <div className="flex-auto lg:pl-20">
-                <Link to='/' className="btn btn-ghost normal-case text-xl">Amazon</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Multivendor E-Shop</Link>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
