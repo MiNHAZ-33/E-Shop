@@ -11,7 +11,11 @@ const reviewSchema = mongoose.Schema({
         type: String, required: true
     },
 },
-    timestamps = true)
+    {
+
+        timestamps: true
+    }
+)
 
 const productSchema = mongoose.Schema({
     user: {
@@ -32,7 +36,7 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    catagory: {
+    category: {
         type: String,
         required: true,
 
@@ -41,9 +45,7 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    reviews: {
-
-    },
+    reviews: [reviewSchema],
     rating: {
         type: Number,
         required: true,
