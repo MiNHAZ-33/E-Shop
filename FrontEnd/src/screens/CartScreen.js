@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 import Message from '../components/Message'
 
 const CartScreen = () => {
@@ -26,8 +26,8 @@ const CartScreen = () => {
         test();
     }, [dispatch, productId, qty])
 
-    const removeFromCartHandler = () => {
-        console.log('Item is removed');
+    const removeFromCartHandler = (id) => {
+        dispatch(removeFromCart(id))
     }
     const checkOutHandler = () => {
         history('/login?redirect=shipping')
@@ -52,7 +52,7 @@ const CartScreen = () => {
                                         ))}
                                     </select>
                                 </div>
-                                <button onClick={removeFromCartHandler}>
+                                <button onClick={()=>removeFromCartHandler(item.product)}>
                                     <i className='fas fa-trash'></i>
                                 </button>
                             </div>
@@ -62,7 +62,7 @@ const CartScreen = () => {
                         <li>Total Items ({cartItems.reduce((acc, item) => acc + item.qty, 0)})</li>
                         <li>Total prices: {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</li>
                         <button type="button" onClick={checkOutHandler} className="py-2 px-4 w-full text-center font-medium  border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                                Order Now
+                                Proceed to checkout
                             </button>
                     </ul>
                 </div>
