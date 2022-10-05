@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -12,7 +12,7 @@ const ProductScreen = () => {
     const history = useNavigate()
     const match = params.id
 
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
 
     const dispatch = useDispatch();
 
@@ -37,17 +37,17 @@ const ProductScreen = () => {
                     <div className="container grid lg:grid-cols-3 sm:grid-cols-1  gap-x-8 ">
                         <img src={product.image} alt={product.name} />
 
-                        <ul class="text-xl font-medium text-gray-900  dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                            <li class="py-4 px-4 w-full border-b border-gray-200 dark:border-gray-600">
+                        <ul className="text-xl font-medium text-gray-900  dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <li className="py-4 px-4 w-full border-b border-gray-200 dark:border-gray-600">
                                 <h1>{product.name}</h1>
                             </li>
-                            <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600"> <Rating value={product.rating} text={product.numReviews} /></li>
-                            <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
+                            <li className="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600"> <Rating value={product.rating} text={product.numReviews} /></li>
+                            <li className="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
                                 <h1 className='text-2xl'> Price : {product.price} $</h1>
                             </li>
-                            <li class="py-2 px-4 w-full ">Description : {product.description}</li>
+                            <li className="py-2 px-4 w-full ">Description : {product.description}</li>
                         </ul>
-                        <div class=" w-80 font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <div className=" w-80 font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                             <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                                 <div className='container grid grid-cols-2  gap-4 '>
                                     <h1>Price :</h1>
