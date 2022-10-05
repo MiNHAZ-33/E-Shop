@@ -18,7 +18,6 @@ function HomeScreen() {
         dispatch(listProducts())
     }, [dispatch])
 
-    console.log(products)
 
     return (
         <div className='lg:px-20'>
