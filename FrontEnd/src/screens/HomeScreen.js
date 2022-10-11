@@ -18,11 +18,10 @@ function HomeScreen() {
         dispatch(listProducts())
     }, [dispatch])
 
-
     return (
+      
         <div className='lg:px-20'>
-            <h1 className=' sm:flex items-center justify-center text-2xl'>Latest Products</h1>
-            {loading ? (<Loader />) : error ? (<Message message={error}/>) : <div className='container grid lg:grid-cols-3  gap-4 flex-col items-center justify-center mx-auto'>
+            {loading ? (<Loader />) : error ? (<Message message={error}/>) : <div className='container grid lg:grid-cols-3  gap-4 flex-col items-center justify-center '>
                 {products.map((product) => <ProductCard key={product._id} props={product} />)}
             </div>}
         </div>

@@ -12,7 +12,6 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main>
         <Routes>
           <Route exact path='/' element={<HomeScreen />} />
           <Route path='/product/:id' element={<ProductScreen />} />
@@ -20,7 +19,6 @@ function App() {
           <Route path='/cart/:id' element={<CartScreen />} />
           <Route path='/login' element={<LoginScreen/>}/>
         </Routes>
-      </main>
       <Footer />
     </BrowserRouter>
   );

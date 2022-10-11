@@ -30,7 +30,7 @@ const ProductScreen = () => {
     }
     return (
 
-        <div className='container mx-auto lg:px-20 sm:px-10'>
+        <div className='container mx-auto lg:px-20 sm:px-10 pt-5 '>
             {loading ? <Loader /> : error ? <Message message={error} /> :
                 <div className='flex justify-center items-center '>
                     <div className="container grid lg:grid-cols-3 sm:grid-cols-1  gap-x-8 ">
