@@ -1,0 +1,106 @@
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { getUserDetails, updateUerProfile } from '../actions/userActions';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
+import FormContainer from '../components/FormContainer';
+
+const ProfileScreen = () => {
+
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [message, setMassage] = useState(null)
+
+
+    const history = useNavigate();
+    const redirect = window.location.search ? window.location.search.split('=')[1] : '/'
+    const dispatch = useDispatch();
+
+    const userDetails = useSelector(state => state.userDetails);
+    const { loading, error, user } = userDetails;
+
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile);
+    const { success } = userUpdateProfile;
+
+    useEffect(() => {
+        if (!userInfo) {
+            history(`/login`)
+        } else {
+            if (!user.name) {
+                dispatch(getUserDetails('profile'))
+            } else {
+                setName(user.name);
+                setEmail(user.email)
+            }
+        }
+    }, [dispatch, history, userInfo,  user])
+
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        if (password !== confirmPassword) {
+            setMassage(`Password don't match `)
+        }
+        else {
+            dispatch(updateUerProfile({ id: user._id, name, email, password }))
+        }
+    }
+
+
+    return (
+        <div className='grid grid-cols-2'>
+            <div className=' items-center justify-center'>
+                {message && <Message message={message} />}
+                {error && <Message message={error} />}
+                {success && <Message message={'Profile Updated Successfully'}/>}
+                {loading && <Loader />}
+                <FormContainer>
+                <form onSubmit={submitHandler}>
+                    <div className="form-control w-full  ">
+                        <br />
+                        <h1 className='text-3xl'>User Profile</h1>
+                        <br />
+                        <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input type="text" value={name} placeholder="Enter your Name" className="input input-bordered w-full max-w-xs" onChange={(e) => setName(e.target.value)} />
+                    </div>
+                    <div className="form-control w-full  ">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="email" value={email} placeholder="Enter your email" className="input input-bordered w-full max-w-xs" onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text">Password</span>
+
+                        </label>
+                        <input type="password" placeholder="Enter your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text">Confirm Password</span>
+
+                        </label>
+                        <input type="password" placeholder="Confirm your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setConfirmPassword(e.target.value)} />
+                    </div>
+                    <div className='py-4 flex justify-center items-center'>
+                        <button type='submit' className=' btn btn-primary w-24'>Update</button>
+                    </div>
+                    </form>
+                    </FormContainer>
+            </div>
+
+            <div>My Orders</div>
+        </div>
+    )
+}
+
+export default ProfileScreen;
