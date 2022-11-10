@@ -42,7 +42,7 @@ const ProductScreen = () => {
                             </li>
                             <li className="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600"> <Rating value={product.rating} text={product.numReviews} /></li>
                             <li className="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                                <h1 className='text-2xl'> Price : {product.price} $</h1>
+                                <h1 className='text-2xl'> Price : {product.price} TK</h1>
                             </li>
                             <li className="py-2 px-4 w-full ">Description : {product.description}</li>
                         </ul>

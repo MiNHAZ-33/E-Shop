@@ -19,9 +19,9 @@ function HomeScreen() {
     }, [dispatch])
 
     return (
-      
+
         <div className='lg:px-20'>
-            {loading ? (<Loader />) : error ? (<Message message={error}/>) : <div className='container grid lg:grid-cols-3  gap-4 flex-col items-center justify-center '>
+            {loading ? (<Loader />) : error ? (<Message message={error} />) : <div className=' grid lg:grid-cols-5 md:grid-cols-3  gap-2 flex-col items-center justify-center '>
                 {products.map((product) => <ProductCard key={product._id} props={product} />)}
             </div>}
         </div>
