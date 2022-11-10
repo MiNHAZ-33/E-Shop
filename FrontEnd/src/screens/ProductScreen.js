@@ -75,7 +75,6 @@ const ProductScreen = () => {
                                 </div>
                             </div>
                             }
-
                             <button type="button" onClick={addToCartHandler} className="py-2 px-4 w-full text-center font-medium  border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
                                 Order Now
                             </button>
