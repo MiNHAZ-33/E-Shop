@@ -20,7 +20,7 @@ function Header() {
     }
 
     return (
-        <nav className='navbar bg-base-100 top-0'>
+        <nav className='navbar bg-base-100 top-0 shadow-xl'>
             <div className=" container  top-0 mx-auto flex">
                 <div className="flex-auto ">
                     <Link to='/' className="btn btn-outline normal-case text-xl">Multivendor E-Shop</Link>
