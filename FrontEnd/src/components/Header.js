@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../actions/userActions';
@@ -46,7 +46,7 @@ function Header() {
                                 </label>
                                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                     <li>
-                                        <Link to={'/login'} className="justify-between">
+                                        <Link to={'/profile'} className="justify-between">
                                             Profile
                                             <span className="badge">New</span>
                                         </Link>

@@ -29,8 +29,15 @@ const CartScreen = () => {
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
     }
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
     const checkOutHandler = () => {
-        history('/login?redirect=shipping')
+        if (!userInfo) {
+            history('/login')
+        } else {
+            history('/shipping')
+        }
     }
 
     return (
@@ -52,7 +59,7 @@ const CartScreen = () => {
                                         ))}
                                     </select>
                                 </div>
-                                <button onClick={()=>removeFromCartHandler(item.product)}>
+                                <button onClick={() => removeFromCartHandler(item.product)}>
                                     <i className='fas fa-trash'></i>
                                 </button>
                             </div>
@@ -62,8 +69,8 @@ const CartScreen = () => {
                         <li className='pb-2 text-lg' >Total Items : {cartItems.reduce((acc, item) => acc + item.qty, 0)}</li>
                         <li className='pb-2 text-lg'>Total prices: {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)} TK</li>
                         <button type="button" onClick={checkOutHandler} className="py-2 px-4 w-full text-center font-medium  border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                                Proceed to checkout
-                            </button>
+                            Proceed to checkout
+                        </button>
                     </ul>
                 </div>
             }
