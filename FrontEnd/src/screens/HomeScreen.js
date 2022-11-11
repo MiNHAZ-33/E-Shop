@@ -6,6 +6,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import CategoryName from '../components/CategoryName';
 import Slider from '../components/Slider';
+import FilteredProduct from '../components/FilteredProduct';
 
 function HomeScreen() {
 
@@ -23,12 +24,14 @@ function HomeScreen() {
     return (
         <>
             <Slider />
-            <CategoryName />
-            <div className='lg:px-20'>
-                {loading ? (<Loader />) : error ? (<Message message={error} />) : <div className=' grid lg:grid-cols-5 md:grid-cols-3  gap-2 flex-col items-center justify-center '>
-                    {products.map((product) => <ProductCard key={product._id} props={product} />)}
-                </div>}
+            <p className='lg:px-20 text-xl font-bold'>Today's Hot Deals</p>
+        <div className='lg:px-20'>
+            {loading ? (<Loader />) : error ? (<Message message={error} />) : <div className=' grid lg:grid-cols-5 md:grid-cols-3  gap-2 flex-col items-center justify-center '>
+                {products.map((product) => <ProductCard key={product._id} props={product} />)}
+            </div>}
+            <CategoryName/>
             </div>
+            <FilteredProduct/>
         </>
     )
 }
