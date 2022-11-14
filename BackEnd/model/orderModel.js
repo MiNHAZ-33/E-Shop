@@ -25,7 +25,7 @@ const orderSchema = mongoose.Schema({
             },
         }
     ],
-    shippingAdress: {
+    shippingAddress: {
         address: {
             type: String, required: true
         },
@@ -48,11 +48,6 @@ const orderSchema = mongoose.Schema({
         status: {type: String},
         update_time: {type: String},
         email_address: {type: String},
-    },
-    taxPrice: {
-        type: Number,
-        required: true,
-        default: 0.0
     },
     shippingPrice: {
         type: Number,
