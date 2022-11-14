@@ -11,22 +11,25 @@ import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrderScreen from './screens/OrderScreen';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-        <Routes>
-          <Route exact path='/' element={<HomeScreen />} />
-          <Route path='/product/:id' element={<ProductScreen />} />
-          <Route path='/cart/' element={<CartScreen />} />
-          <Route path='/cart/:id' element={<CartScreen />} />
-          <Route path='/login' element={<LoginScreen/>}/>
-          <Route path='/register' element={<RegisterScreen/>}/>
-          <Route path='/profile' element={<ProfileScreen/>}/>
+      <Routes>
+        <Route exact path='/' element={<HomeScreen />} />
+        <Route path='/product/:id' element={<ProductScreen />} />
+        <Route path='/cart/' element={<CartScreen />} />
+        <Route path='/cart/:id' element={<CartScreen />} />
+        <Route path='/login' element={<LoginScreen />} />
+        <Route path='/register' element={<RegisterScreen />} />
+        <Route path='/profile' element={<ProfileScreen />} />
         <Route path='/shipping' element={<ShippingScreen />} />
         <Route path='/placeorder' element={<PlaceOrderScreen />} />
-        </Routes>
+        <Route path='/order/' element={<OrderScreen />} />
+        <Route path='/order/:id' element={<OrderScreen />} />
+      </Routes>
       <Footer />
     </BrowserRouter>
   );
