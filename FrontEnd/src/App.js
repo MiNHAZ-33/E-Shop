@@ -10,6 +10,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ShippingScreen from './screens/ShippingScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
           <Route path='/login' element={<LoginScreen/>}/>
           <Route path='/register' element={<RegisterScreen/>}/>
           <Route path='/profile' element={<ProfileScreen/>}/>
-          <Route path='/shipping' element={<ShippingScreen/>}/>
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path='/placeorder' element={<PlaceOrderScreen />} />
         </Routes>
       <Footer />
     </BrowserRouter>
