@@ -39,13 +39,12 @@ const ProfileScreen = () => {
             if (!user.name) {
                 dispatch(getUserDetails('profile'));
                 dispatch(listMyOrders());
-                console.log(errorOrders)
             } else {
                 setName(user.name);
                 setEmail(user.email)
             }
         }
-    }, [dispatch, history, userInfo,  user])
+    }, [dispatch, history, userInfo, user])
 
 
     const submitHandler = (e) => {
@@ -60,67 +59,67 @@ const ProfileScreen = () => {
 
 
     return (
-        <div className='grid grid-cols-2'>
+        <div className='grid grid-cols-3'>
             <div className=' items-center justify-center'>
                 {message && <Message message={message} />}
                 {error && <Message message={error} />}
-                {success && <Message message={'Profile Updated Successfully'}/>}
+                {success && <Message message={'Profile Updated Successfully'} />}
                 {loading && <Loader />}
                 <FormContainer>
-                <form onSubmit={submitHandler}>
-                    <div className="form-control w-full  ">
-                        <br />
-                        <h1 className='text-3xl'>User Profile</h1>
-                        <br />
-                        <label className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input type="text" value={name} placeholder="Enter your Name" className="input input-bordered w-full max-w-xs" onChange={(e) => setName(e.target.value)} />
-                    </div>
-                    <div className="form-control w-full  ">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input type="email" value={email} placeholder="Enter your email" className="input input-bordered w-full max-w-xs" onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className="form-control w-full ">
-                        <label className="label">
-                            <span className="label-text">Password</span>
+                    <form onSubmit={submitHandler}>
+                        <div className="form-control w-full  ">
+                            <br />
+                            <h1 className='text-3xl'>User Profile</h1>
+                            <br />
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" value={name} placeholder="Enter your Name" className="input input-bordered w-full max-w-xs" onChange={(e) => setName(e.target.value)} />
+                        </div>
+                        <div className="form-control w-full  ">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input type="email" value={email} placeholder="Enter your email" className="input input-bordered w-full max-w-xs" onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Password</span>
 
-                        </label>
-                        <input type="password" placeholder="Enter your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setPassword(e.target.value)} />
-                    </div>
-                    <div className="form-control w-full ">
-                        <label className="label">
-                            <span className="label-text">Confirm Password</span>
+                            </label>
+                            <input type="password" placeholder="Enter your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setPassword(e.target.value)} />
+                        </div>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
 
-                        </label>
-                        <input type="password" placeholder="Confirm your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setConfirmPassword(e.target.value)} />
-                    </div>
-                    <div className='py-4 flex justify-center items-center'>
-                        <button type='submit' className=' btn btn-primary w-24'>Update</button>
-                    </div>
+                            </label>
+                            <input type="password" placeholder="Confirm your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setConfirmPassword(e.target.value)} />
+                        </div>
+                        <div className='py-4 flex justify-center items-center'>
+                            <button type='submit' className=' btn btn-primary w-24'>Update</button>
+                        </div>
                     </form>
-                    </FormContainer>
+                </FormContainer>
             </div>
 
-            <div>
+            <div className='col-span-2'>
                 <h1 className='text-xl font-bold'>My Orders</h1>
                 <div>
-                        {orders.map(order => (
-                            <div className="grid grid-cols-6 gap-2 border-b-2">
-                                <h1 className='flex items-center justify-center'>{order._id}</h1>
-                                <h1 className='flex items-center justify-center'>{order.createdAt.substring(0,10)}</h1>
-                                <h1 className='flex items-center justify-center'>{order.totalPrice}</h1>
-                                <h1 className='flex items-center justify-center'>{order.isPaid ? order.paidAt.substring(0,10) : <i className='fas fa-times' style={{color: 'red'}}></i> }</h1>
-                                <h1 className='flex items-center justify-center'>{order.isDelivered ? order.isDeliveredAt.substring(0,10) : <i className='fas fa-times' style={{color: 'red'}}></i> }</h1>
-                                <h1>{ errorOrders }</h1>
-                                {/* <button >
+                    {orders.map(order => (
+                        <div key={order._id} className="grid grid-cols-6 gap-2 border-b-2">
+                            <h1 className='flex items-center justify-center'>{order._id}</h1>
+                            <h1 className='flex items-center justify-center'>{order.createdAt.substring(0, 10)}</h1>
+                            <h1 className='flex items-center justify-center'>{order.totalPrice}</h1>
+                            <h1 className='flex items-center justify-center'>{order.isPaid ? order.paidAt.substring(0, 10) : <i className='fas fa-times' style={{ color: 'red' }}></i>}</h1>
+                            <h1 className='flex items-center justify-center'>{order.isDelivered ? order.isDeliveredAt.substring(0, 10) : <i className='fas fa-times' style={{ color: 'red' }}></i>}</h1>
+                            <h1>{errorOrders}</h1>
+                            {/* <button >
                                     <i className='fas fa-trash'></i>
                                 </button> */}
-                            </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
