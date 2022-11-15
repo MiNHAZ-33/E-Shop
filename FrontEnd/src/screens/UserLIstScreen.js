@@ -46,7 +46,7 @@ const UserListScreen = () => {
                                     {/* <td>{user.isAdmin ? (<i className='fas fa-check' style={{ color: 'green' }}> </i>) : (<i className='fas fa-items' style={{ color: 'red' }}></i>)}</td> */}
                                     <td>{ user.isAdmin}</td>
                                     <td>
-                                        <Link to={`/user/${user._id}/edit`}>
+                                        <Link to={`admin/user/${user._id}/edit`}>
                                             <button className='btn'> <i className='fas fa-edit'></i> </button>
                                         </Link>
                                             <button  onClick={()=>deleteHandler(user._id)} className='btn'> <i className='fas fa-trash'></i> </button>
