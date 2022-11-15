@@ -12,7 +12,7 @@ const PlaceOrderScreen = () => {
 
     cart.itemPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
     cart.shippingPrice = 70;
-    cart.totalPrice = cart.itemPrice + cart.deliveryCharge;
+    cart.totalPrice = cart.itemPrice + cart.shippingPrice;
 
     const orderCreate = useSelector(state => state.orderCreate);
     const { order, success, error } = orderCreate;

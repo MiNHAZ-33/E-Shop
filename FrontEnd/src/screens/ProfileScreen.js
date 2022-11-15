@@ -5,6 +5,7 @@ import { getUserDetails, updateUerProfile } from '../actions/userActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
+import { listMyOrders } from '../actions/orderActions';
 
 const ProfileScreen = () => {
 
@@ -28,12 +29,17 @@ const ProfileScreen = () => {
     const userUpdateProfile = useSelector(state => state.userUpdateProfile);
     const { success } = userUpdateProfile;
 
+    const orderListMy = useSelector(state => state.orderListMy);
+    const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+
     useEffect(() => {
         if (!userInfo) {
             history(`/login`)
         } else {
             if (!user.name) {
-                dispatch(getUserDetails('profile'))
+                dispatch(getUserDetails('profile'));
+                dispatch(listMyOrders());
+                console.log(errorOrders)
             } else {
                 setName(user.name);
                 setEmail(user.email)
@@ -98,7 +104,24 @@ const ProfileScreen = () => {
                     </FormContainer>
             </div>
 
-            <div>My Orders</div>
+            <div>
+                <h1 className='text-xl font-bold'>My Orders</h1>
+                <div>
+                        {orders.map(order => (
+                            <div className="grid grid-cols-6 gap-2 border-b-2">
+                                <h1 className='flex items-center justify-center'>{order._id}</h1>
+                                <h1 className='flex items-center justify-center'>{order.createdAt.substring(0,10)}</h1>
+                                <h1 className='flex items-center justify-center'>{order.totalPrice}</h1>
+                                <h1 className='flex items-center justify-center'>{order.isPaid ? order.paidAt.substring(0,10) : <i className='fas fa-times' style={{color: 'red'}}></i> }</h1>
+                                <h1 className='flex items-center justify-center'>{order.isDelivered ? order.isDeliveredAt.substring(0,10) : <i className='fas fa-times' style={{color: 'red'}}></i> }</h1>
+                                <h1>{ errorOrders }</h1>
+                                {/* <button >
+                                    <i className='fas fa-trash'></i>
+                                </button> */}
+                            </div>
+                        ))}
+                    </div>
+            </div>
         </div>
     )
 }
