@@ -51,12 +51,22 @@ function Header() {
                                             <span className="badge">New</span>
                                         </Link>
                                     </li>
-                                    <li><a>Settings</a></li>
+                                    {userInfo && userInfo.isAdmin && <li>
+                                        <Link to={'/admin/userlist'}>Users</Link>
+                                    </li> }
+                                    {userInfo && userInfo.isAdmin && <li>
+                                        <Link to={'/admin/productlist'}>Products</Link>
+                                    </li>}
+                                    {userInfo && userInfo.isAdmin && <li>
+                                        <Link to={'/admin/orderlist'}>Orders</Link>
+                                    </li>}
+                                    
                                     <li onClick={logOutHandler}><a>Logout</a></li> 
                                 </ul>
                             </div> : <Link to={'/login'} className="justify-between">
                                 Log in
                             </Link>}
+                    
                 </div>
             </div>
         </nav>
