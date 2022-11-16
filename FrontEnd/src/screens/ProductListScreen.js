@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
-import { listProducts, deleteProduct } from '../actions/productActions';
+import { listProducts, deleteProduct, createProduct } from '../actions/productActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 
 const ProductListScreen = () => {
     const dispatch = useDispatch();
@@ -15,16 +16,22 @@ const ProductListScreen = () => {
     const { userInfo } = userLogin;
     const productDelete = useSelector(state => state.productDelete);
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete;
+    const productCreate = useSelector(state => state.productCreate);
+    const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct } = productCreate;
 
 
     useEffect(() => {
-        if (userInfo && userInfo.isAdmin) {
-            
-            dispatch(listProducts())
-        } else {
+        dispatch({ type: PRODUCT_CREATE_RESET });
+        if (!userInfo.isAdmin) {
             history('/login')
+            dispatch(listProducts())
         }
-    }, [dispatch, history, userInfo, successDelete]) 
+        if (successCreate) {
+            history(`/admin/product/${createdProduct._id}/edit`)
+        } else {
+            dispatch(listProducts())
+        }
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
 
     const deleteHandler = (id) => {
         // dispatch(deleteUser(id))
@@ -33,6 +40,7 @@ const ProductListScreen = () => {
 
     const createProductHandler = () => {
         //creaet a new product
+        dispatch(createProduct())
     }
 
     return (
@@ -53,23 +61,23 @@ const ProductListScreen = () => {
                     </thead>
                     <tbody>
 
-                        
-                            {products.map(product => (
-                                <tr key={product._id}>
-                                    <td>{  product._id }</td>
-                                    <td>{  product.name }</td>
-                                    <td>{  product.price }</td>
-                                    {/* <td>{product.isAdmin ? (<i className='fas fa-check' style={{ color: 'green' }}> </i>) : (<i className='fas fa-items' style={{ color: 'red' }}></i>)}</td> */}
-                                    <td>{ product.category}</td>
-                                    <td>{ product.brand}</td>
-                                    <td>
-                                        <Link to={`/admin/product/${product._id}/edit`}>
-                                            <button className='btn'> <i className='fas fa-edit'></i> </button>
-                                        </Link>
-                                            <button  onClick={()=>deleteHandler(product._id)} className='btn'> <i className='fas fa-trash'></i> </button>
-                                    </td>
-                                </tr>
-                            ))}
+
+                        {products.map(product => (
+                            <tr key={product._id}>
+                                <td>{product._id}</td>
+                                <td>{product.name}</td>
+                                <td>{product.price}</td>
+                                {/* <td>{product.isAdmin ? (<i className='fas fa-check' style={{ color: 'green' }}> </i>) : (<i className='fas fa-items' style={{ color: 'red' }}></i>)}</td> */}
+                                <td>{product.category}</td>
+                                <td>{product.brand}</td>
+                                <td>
+                                    <Link to={`/admin/product/${product._id}/edit`}>
+                                        <button className='btn'> <i className='fas fa-edit'></i> </button>
+                                    </Link>
+                                    <button onClick={() => deleteHandler(product._id)} className='btn'> <i className='fas fa-trash'></i> </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>}
