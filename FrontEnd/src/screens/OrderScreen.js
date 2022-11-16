@@ -36,7 +36,6 @@ const OrderScreen = () => {
                                     <h1 className='col-span-2 flex items-center justify-center'>{item.name}</h1>
                                     <h1 className='flex items-center justify-center'>{item.qty} x {item.price} </h1>
                                     <h1 className='flex items-center justify-center'> {item.qty * item.price}</h1>
-
                                 </div>
                             ))}
                         </div>

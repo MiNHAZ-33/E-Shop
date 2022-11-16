@@ -9,8 +9,6 @@ const FilteredProduct = () => {
 
     const { products } = productList;
 
-    console.log(products)
-
 
     return (
         <>  

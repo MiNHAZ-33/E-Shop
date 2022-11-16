@@ -106,7 +106,7 @@ const ProfileScreen = () => {
             <div className='col-span-2'>
                 <h1 className='text-xl font-bold'>My Orders</h1>
                 <div>
-                    {orders.map(order => (
+                    {orders && orders.map(order => (
                         <div key={order._id} className="grid grid-cols-6 gap-2 border-b-2">
                             <h1 className='flex items-center justify-center'>{order._id}</h1>
                             <h1 className='flex items-center justify-center'>{order.createdAt.substring(0, 10)}</h1>
