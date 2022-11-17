@@ -23,7 +23,7 @@ function Header() {
         <nav className='navbar bg-base-100 top-0 shadow-xl'>
             <div className=" container  top-0 mx-auto flex">
                 <div className="flex-auto ">
-                    <Link to='/' className="btn btn-outline normal-case text-xl">Multivendor E-Shop</Link>
+                    <Link to='/' className="btn btn-outline normal-case text-xl">Amazon</Link>
                 </div>
                 <div className="flex-none ">
                     <div className="dropdown dropdown-end">
@@ -66,7 +66,7 @@ function Header() {
                                     
                                     <li onClick={logOutHandler}><a>Logout</a></li> 
                                 </ul>
-                            </div> : <Link to={'/login'} className="justify-between">
+                            </div> : <Link to={'/login'} className="font-bold justify-between">
                                 Log in
                             </Link>}
                     

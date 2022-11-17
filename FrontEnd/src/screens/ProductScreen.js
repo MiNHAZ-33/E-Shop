@@ -142,12 +142,11 @@ const ProductScreen = () => {
                                 <div className='py-4 flex justify-center items-center'>
                                     <button type='submit' className=' btn btn-primary w-24'>Add review</button>
                                 </div>
-
                             </form>
                         ) : <Message message={'You need to be logged in to give review'} />}
                     </div>
                 </>}
-            <Link className='btn btn-dark'>Back</Link>
+            <Link to={'/'} className='btn btn-dark'>Back</Link>
         </div>
     )
 }
