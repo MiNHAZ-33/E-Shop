@@ -31,6 +31,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            balance: user.balance
         })
     } else {
         res.status(401);

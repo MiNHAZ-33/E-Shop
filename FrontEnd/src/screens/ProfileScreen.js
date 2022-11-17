@@ -104,6 +104,13 @@ const ProfileScreen = () => {
             </div>
 
             <div className='col-span-2'>
+                <h1 className='text-xl font-bold'>Account Balance</h1>
+                <div className='container py-2 '>
+                    <h1 className='text-2xl'> {user.balance} TK </h1>
+                    <h1 className='font-bold py-2'> Enter your token here for recharge</h1>
+                    <input type="text" placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
+                    <button className='btn px-5 mx-2'> RECHARGE</button>
+                </div>
                 <h1 className='text-xl font-bold'>My Orders</h1>
                 <div>
                     {orders && orders.map(order => (
