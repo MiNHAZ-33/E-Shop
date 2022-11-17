@@ -35,27 +35,27 @@ const ShippingScreen = () => {
                     <label className="label">
                         <span className="label-text">Address</span>
                     </label>
-                    <input type="text" placeholder="Enter your address" className="input input-bordered w-full max-w-xs" onChange={(e) => setAddress(e.target.value)} />
+                    <input type="text" value={address} placeholder="Enter your address" className="input input-bordered w-full max-w-xs" onChange={(e) => setAddress(e.target.value)} />
                 </div>
                 <div className="form-control w-full  ">
                     <label className="label">
                         <span className="label-text">City</span>
                     </label>
-                    <input type="text" placeholder="Enter your City" className="input input-bordered w-full max-w-xs" onChange={(e) => setCity(e.target.value)} />
+                    <input type="text" value={city} placeholder="Enter your City" className="input input-bordered w-full max-w-xs" onChange={(e) => setCity(e.target.value)} />
                 </div>
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text">Postal Code</span>
 
                     </label>
-                    <input type="text" placeholder="Enter your Postal Code" className="input input-bordered w-full max-w-xs" onChange={(e) => setPostalCode(e.target.value)} />
+                    <input type="text" value={postalCode} placeholder="Enter your Postal Code" className="input input-bordered w-full max-w-xs" onChange={(e) => setPostalCode(e.target.value)} />
                 </div>
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text">Country</span>
 
                     </label>
-                    <input type="text" placeholder="Enter your country" className="input input-bordered w-full max-w-xs" onChange={(e) => setCountry(e.target.value)} />
+                    <input type="text" value={country} placeholder="Enter your country" className="input input-bordered w-full max-w-xs" onChange={(e) => setCountry(e.target.value)} />
                 </div>
                 <div className='py-4 flex justify-center items-center'>
                     <button type='submit' className=' btn btn-primary w-24'>Confirm</button>

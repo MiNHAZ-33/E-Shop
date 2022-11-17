@@ -20,6 +20,7 @@ const RegisterScreen = () => {
     const dispatch = useDispatch();
     const userRegister = useSelector(state => state.userRegister);
     const { loading, error, userInfo } = userRegister;
+    const balance = 0;
 
     useEffect(() => {
         if (userInfo) {
@@ -35,8 +36,7 @@ const RegisterScreen = () => {
             setMassage(`Password don't match `)
         }
         else {
-            
-            dispatch(register(name, email, password))
+            dispatch(register(name, email, password, balance))
         }
     }
 

@@ -12,10 +12,15 @@ const OrderScreen = () => {
 
     const orderDetails = useSelector(state => state.orderDetails);
     const { order, loading, error } = orderDetails;
+    const orderPay = useSelector(state => state.orderPay);
+    const { loading: loadingPay, success: successPay, error: errorpay } = orderPay;
 
     useEffect(() => {
         dispatch(getOrderDetails(orderId))
-    }, [dispatch, orderId])
+        if (!order || successPay) {
+            dispatch(getOrderDetails(orderId))
+        }
+    }, [dispatch, successPay])
 
 
     return (
@@ -44,14 +49,14 @@ const OrderScreen = () => {
                             <li className='pb-2 text-lg'>Delivery Charge: {order.shippingPrice}</li>
                             <li className='pb-2 text-lg'>Total Prices : {order.totalPrice} TK</li>
                             <li>
-                            <div className='grid grid-col-2'>
-                            <p> Payment Status: </p>
-                            {order.isPaid ? <Message message={'Paid'}/> : <Message message={'Not Paid'}/>}
-                            </div>
-                            <div className='grid grid-col-2'>
-                            <p> Delivery Status: </p>
-                            {order.isDelivered ? <Message message={'Delivered'}/> : <Message message={'Not Delivered'}/>}
-                            </div>
+                                <div className='grid grid-col-2'>
+                                    <p> Payment Status: </p>
+                                    {order.isPaid ? (<Message message={'Paid'} />) : (<button className='btn'>Pay</button>) }
+                                </div>
+                                <div className='grid grid-col-2'>
+                                    <p> Delivery Status: </p>
+                                    {order.isDelivered ? <Message message={'Delivered'} /> : <Message message={'Not Delivered'} />}
+                                </div>
                             </li>
                         </ul>
                     </div>

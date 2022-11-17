@@ -15,6 +15,7 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            balance: user.balance,
             token: generateToken(user._id)
         })
     } else {
@@ -66,7 +67,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, balance } = req.body;
 
     const userExist = await User.findOne({ email });
 
@@ -78,7 +79,8 @@ const registerUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         name,
         email,
-        password
+        password,
+        balance
     })
 
     if (user) {
@@ -87,6 +89,7 @@ const registerUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            balance: user.balance,
             token: generateToken(user._id)
         })
     } else {
@@ -176,12 +179,14 @@ const updateUserBalance = asyncHandler(async (req, res) => {
     if (!tokenValidation) {
         res.status(401);
         throw new Error('Card is not valid')
-    } else if (!tokenValidation.isUsed) {
+    } else if (tokenValidation.isUsed) {
         res.status(400);
         throw new Error('Card already used');
     }
     if (user) {
         user.balance = user.balance + tokenValidation.balance;
+        tokenValidation.isUsed = true;
+        await tokenValidation.save();
         const updatedUser = await user.save();
         res.json({
             _id: updatedUser.id,
@@ -196,4 +201,24 @@ const updateUserBalance = asyncHandler(async (req, res) => {
     }
 })
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser, updateUserBalance, createToken, getTokenList }
+
+const paidUserBalance = asyncHandler(async (req, res) => {
+    const { id, amount } = req.body;
+    const user = await User.findById(id)
+    if (user) {
+        user.balance = user.balance - amount;
+        const updatedUser = await user.save();
+        res.json({
+            _id: updatedUser.id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
+            balance: user.balance
+        })
+    } else {
+        res.status(401);
+        throw new Error('User not found')
+    }
+})
+
+export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser, updateUserBalance, createToken, getTokenList, paidUserBalance }
