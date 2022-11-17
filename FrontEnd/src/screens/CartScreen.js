@@ -41,11 +41,11 @@ const CartScreen = () => {
     }
 
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto lg:mx-5'>
             <br />
             {cartItems.length === 0 ? <Message message={'Your cart is Empty, buy something'} /> :
-                <div className=" grid grid-cols-6 gap-5">
-                    <div className='col-span-4'>
+                <div className=" grid grid-cols-5 gap-5">
+                    <div className='col-span-3'>
                         {cartItems.map(item => (
                             <div className="grid grid-cols-6 gap-2 border-b-2">
                                 <img className='h-20 w-20' src={item.image} alt={item.image} />
@@ -65,9 +65,14 @@ const CartScreen = () => {
                             </div>
                         ))}
                     </div>
-                    <ul className='col-span-1  '>
-                        <li className='pb-2 text-lg' >Total Items : {cartItems.reduce((acc, item) => acc + item.qty, 0)}</li>
-                        <li className='pb-2 text-lg'>Total prices: {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)} TK</li>
+                    <ul className='col-span-1 '>
+                        <li className='pb-2 text-lg grid grid-cols-2' >
+                            <p>Total Items : </p>
+                            <p> {cartItems.reduce((acc, item) => acc + item.qty, 0)}</p>
+                        </li>
+                        <li className='pb-2 text-lg grid grid-cols-2'>
+                        <p>Total Items : </p>
+                            <p> {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</p></li>
                         <button type="button" onClick={checkOutHandler} className="py-2 px-4 w-full text-center font-medium  border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
                             Proceed to checkout
                         </button>
