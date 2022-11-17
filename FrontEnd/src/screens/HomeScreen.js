@@ -7,10 +7,15 @@ import Message from '../components/Message';
 import CategoryName from '../components/CategoryName';
 import Slider from '../components/Slider';
 import FilteredProduct from '../components/FilteredProduct';
+import { useParams } from 'react-router-dom';
 
 function HomeScreen() {
 
     const dispatch = useDispatch();
+
+    const params = useParams();
+
+    const keyword = params.keyword;
 
     const productList = useSelector(state => state.productList);
 
@@ -18,8 +23,8 @@ function HomeScreen() {
 
 
     useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
+        dispatch(listProducts(keyword))
+    }, [dispatch, keyword])
 
     return (
         <>

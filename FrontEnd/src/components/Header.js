@@ -1,7 +1,8 @@
 import {React, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { logout } from '../actions/userActions';
+import SearchBox from './SearchBox';
 
 function Header() {
 
@@ -25,6 +26,7 @@ function Header() {
                 <div className="flex-auto ">
                     <Link to='/' className="btn btn-outline normal-case text-xl">Amazon</Link>
                 </div>
+                <SearchBox/>
                 <div className="flex-none ">
                     <div className="dropdown dropdown-end">
                         <Link to={'/cart'}>
