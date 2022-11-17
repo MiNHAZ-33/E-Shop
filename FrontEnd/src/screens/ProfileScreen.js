@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { getUserDetails, updateUerProfile } from '../actions/userActions';
+import { getUserDetails, rechargeUser, updateUerProfile } from '../actions/userActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
@@ -11,10 +11,10 @@ const ProfileScreen = () => {
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [token, setToken] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMassage] = useState(null)
-
 
     const history = useNavigate();
     const redirect = window.location.search ? window.location.search.split('=')[1] : '/'
@@ -31,6 +31,9 @@ const ProfileScreen = () => {
 
     const orderListMy = useSelector(state => state.orderListMy);
     const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+
+    const userRecharge = useSelector(state => state.userRecharge);
+    const { loading: loadingRecharge, error: errorRecharge, success: successRecharge } = userRecharge;
 
     useEffect(() => {
         if (!userInfo) {
@@ -55,6 +58,11 @@ const ProfileScreen = () => {
         else {
             dispatch(updateUerProfile({ id: user._id, name, email, password }))
         }
+    }
+
+    const rechargeHandler = (e) => {
+        e.preventDefault();
+        dispatch( rechargeUser(user._id, token))
     }
 
 
@@ -108,8 +116,8 @@ const ProfileScreen = () => {
                 <div className='container py-2 '>
                     <h1 className='text-2xl'> {user.balance} TK </h1>
                     <h1 className='font-bold py-2'> Enter your token here for recharge</h1>
-                    <input type="text" placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
-                    <button className='btn px-5 mx-2'> RECHARGE</button>
+                    <input type="text" value={token} onChange={(e)=> setToken(e.target.value)} placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
+                    <button onClick={rechargeHandler} className='btn px-5 mx-2'> RECHARGE</button>
                 </div>
                 <h1 className='text-xl font-bold'>My Orders</h1>
                 <div>

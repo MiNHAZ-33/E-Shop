@@ -169,9 +169,8 @@ const getTokenList = asyncHandler(async (req, res) => {
 })
 
 const updateUserBalance = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id)
-    const { token } = req.body;
-
+    const { id, token } = req.body;
+    const user = await User.findById(id)
     const tokenValidation = await Card.findById(token);
 
     if (!tokenValidation) {
