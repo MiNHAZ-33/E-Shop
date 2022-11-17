@@ -12,7 +12,7 @@ const UserEditScreen = () => {
     const userId = params.id;
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(true);
 
     const history = useNavigate();
     const dispatch = useDispatch();
@@ -26,16 +26,15 @@ const UserEditScreen = () => {
             dispatch({ type: USER_EDIT_RESET });
             history('/admin/userlist');
         } else {
-
             if (!user.name || user._id !== userId) {
                 dispatch(getUserDetails(userId))
             } else {
                 setName(user.name);
                 setEmail(user.email);
-                setIsAdmin(user.isAdmin)
+                setIsAdmin(user.isAdmin === "true")
             }
         }
-    }, [user])
+    }, [user, history, successUpdate])
 
 
     const submitHandler = (e) => {
@@ -68,7 +67,7 @@ const UserEditScreen = () => {
                     </div>
                     <div className="form-control">
                         <label className="cursor-pointer label">
-                            <span className="label-text">Is Admin</span>
+                            <span className="label-text">Set as Admin</span>
                             <input type="checkbox" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} className="checkbox checkbox-success" />
                         </label>
                     </div>

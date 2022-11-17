@@ -51,13 +51,13 @@ function Header() {
                                             <span className="badge">New</span>
                                         </Link>
                                     </li>
-                                    {userInfo && userInfo.isAdmin && <li>
+                                    {(userInfo && userInfo.isAdmin === "true") && <li>
                                         <Link to={'/admin/userlist'}>Users</Link>
-                                    </li> }
-                                    {userInfo && userInfo.isAdmin && <li>
+                                    </li>}
+                                    {userInfo && userInfo.isAdmin==="true" && <li>
                                         <Link to={'/admin/productlist'}>Products</Link>
                                     </li>}
-                                    {userInfo && userInfo.isAdmin && <li>
+                                    {userInfo && userInfo.isAdmin==="true" && <li>
                                         <Link to={'/admin/orderlist'}>Orders</Link>
                                     </li>}
                                     

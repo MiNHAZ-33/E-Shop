@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler';
+import Card from '../model/paymentCardModel.js';
 
 import User from "../model/userModel.js";
 import generateToken from '../utils/generateTokens.js';
@@ -145,4 +146,45 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 })
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser }
+const createToken = asyncHandler(async (req, res) => {
+    const { balance } = req.body
+    for ( var i = 0; i < 5; i++)
+    {
+        const card = await Card.create({ balance });
+        await card.save();
+    }
+    res.status(200);
+    res.json({ message: '5 tokens are created'})
+})
+
+const updateUserBalance = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id)
+    const { token } = req.body;
+
+    const tokenValidation = await Card.findById(token);
+
+    if (!tokenValidation)
+    {
+        res.status(401);
+        throw new Error('Card is not valid')
+    } else if (!tokenValidation.isUsed) {
+        res.status(400);
+        throw new Error('Card already used');
+    }
+    if (user) {
+        user.balance = user.balance + tokenValidation.balance;
+        const updatedUser = await user.save();
+        res.json({
+            _id: updatedUser.id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
+            balance: user.balance
+        })
+    } else {
+        res.status(401);
+        throw new Error('User not found')
+    }
+})
+
+export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser, updateUserBalance, createToken }
