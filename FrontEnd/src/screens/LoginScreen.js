@@ -50,7 +50,7 @@ const LoginScreen = () => {
                             <span className="label-text">Password</span>
 
                         </label>
-                        <input type="text" placeholder="Enter your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" placeholder="Enter your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div className='py-4 flex justify-center items-center'>
                         <button type='submit' className=' btn btn-primary w-24'>Login</button>

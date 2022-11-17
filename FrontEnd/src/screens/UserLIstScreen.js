@@ -22,9 +22,9 @@ const UserListScreen = () => {
 
     return (
         <>
-            <h1>Users</h1>
+            <h1 className='text-2xl font-bold mx-5 py-5'>Users</h1>
 
-            {loading ? <Loader /> : error ? <Message message={error} /> : <div className="overflow-x-auto">
+            {loading ? <Loader /> : error ? <Message message={error} /> : <div className="overflow-x-auto mx-5">
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -43,11 +43,11 @@ const UserListScreen = () => {
                                     <td>{  user._id }</td>
                                     <td>{  user.name }</td>
                                     <td>{  user.email }</td>
-                                    {/* <td>{user.isAdmin ? (<i className='fas fa-check' style={{ color: 'green' }}> </i>) : (<i className='fas fa-items' style={{ color: 'red' }}></i>)}</td> */}
-                                    <td>{ user.isAdmin}</td>
+                                    <td>{user.isAdmin === "true" ? (<i className='fas fa-check' style={{ color: 'green' }}> </i>) : (<i className='fas fa-items' style={{ color: 'red' }}></i>)}</td>
+
                                     <td>
                                         <Link to={`/admin/user/${user._id}/edit`}>
-                                            <button className='btn'> <i className='fas fa-edit'></i> </button>
+                                            <button className='btn mx-2'> <i className='fas fa-edit'></i> </button>
                                         </Link>
                                             <button  onClick={()=>deleteHandler(user._id)} className='btn'> <i className='fas fa-trash'></i> </button>
                                     </td>

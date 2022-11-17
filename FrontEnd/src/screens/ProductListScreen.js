@@ -47,7 +47,7 @@ const ProductListScreen = () => {
         <div className='px-5'>
             <h1 className='text-xl font-bold py-3'>Products</h1>
             {loading ? <Loader /> : error ? <Message message={error} /> : <div className="overflow-x-auto">
-                <button onClick={createProductHandler} className='btn items-center justify-center'>Add Product</button>
+                <button onClick={createProductHandler} className='btn items-center justify-center mb-3'>Add Product</button>
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -72,7 +72,7 @@ const ProductListScreen = () => {
                                 <td>{product.brand}</td>
                                 <td>
                                     <Link to={`/admin/product/${product._id}/edit`}>
-                                        <button className='btn'> <i className='fas fa-edit'></i> </button>
+                                        <button className='btn mx-3'> <i className='fas fa-edit'></i> </button>
                                     </Link>
                                     <button onClick={() => deleteHandler(product._id)} className='btn'> <i className='fas fa-trash'></i> </button>
                                 </td>
