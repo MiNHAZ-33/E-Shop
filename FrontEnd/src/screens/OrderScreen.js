@@ -32,9 +32,15 @@ const OrderScreen = () => {
 
 
     return (
-        loading ? <Loader /> : error ? <Message message={error} /> :
+        loading ? <Loader /> : error ? <Message message={error} /> : <>
             <div className='lg:px-20'>
-                <h2>Order History</h2>
+                <ul className="steps items-center justify-center px-10 pb-4">
+                    <li className="step step-info">Added to cart</li>
+                    <li className="step step-info">Shipping Details</li>
+                    <li className="step step-info">Balance</li>
+                    <li className="step step-info" data-content="?">Pay</li>
+                </ul>
+                <h2 className='text-xl font-bold'>Order Details</h2>
                 <p>
                     <strong>Address</strong> {order.shippingAddress.address}, {order.shippingAddress.city}, {' '} {order.shippingAddress.postalCode}, {' '}, {order.shippingAddress.country}
                 </p>
@@ -58,8 +64,9 @@ const OrderScreen = () => {
                             <li className='pb-2 text-lg'>Total Prices : {order.totalPrice} TK</li>
                             <li>
                                 <div className='grid grid-col-2'>
-                                    <p> Payment Status: </p>
+                                    <p className='font-bold'> Payment Status: </p>
                                     {order.isPaid ? (<Message message={'Paid'} />) : (<button onClick={paymentHandler} className='btn'>Pay</button>)}
+                                    {userLoading && loadingPay && <Loader/>}
                                 </div>
                                 <div className='grid grid-col-2'>
                                     <p> Delivery Status: </p>
@@ -70,6 +77,7 @@ const OrderScreen = () => {
                     </div>
                 }
             </div>
+        </>
     )
 }
 

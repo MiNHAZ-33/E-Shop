@@ -24,9 +24,17 @@ const ShippingScreen = () => {
     }
 
     return (
+        <>
+            <ul className="steps flex items-center justify-center  pt-5 pb-4">
+                    <li className="step step-info">Cart</li>
+                    <li className="step step-info ">Address</li>
+                    <li className="step">Balance</li>
+                    <li className="step" data-content="?">Pay</li>
+                </ul>
         <FormContainer>
 
-        <div>
+            <div>
+            
             <form onSubmit={submitHandler}>
             <div className="form-control w-full  ">
                     <br />
@@ -63,6 +71,7 @@ const ShippingScreen = () => {
             </form>
         </div>
         </FormContainer>
+        </>
     )
 }
 

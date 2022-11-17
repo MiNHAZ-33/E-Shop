@@ -48,6 +48,12 @@ const PlaceOrderScreen = () => {
     return (
         <>
             <div className='lg:px-20 pt-5'>
+                <ul className="steps items-center justify-center px-10 pb-4">
+                    <li className="step step-info">Added to cart</li>
+                    <li className="step step-info">Shipping Details</li>
+                    <li className="step step-info">Balance</li>
+                    <li className="step step-error" data-content="?">Pay</li>
+                </ul>
                 <h2 className='text-xl'>Shipping Location: </h2>
                 <p>
                     <strong>Address : </strong> {cart.shippingAddress.address}, {cart.shippingAddress.city}, {' '} {cart.shippingAddress.postalCode}, {' '} <br></br> {cart.shippingAddress.country}
@@ -67,7 +73,7 @@ const PlaceOrderScreen = () => {
                                 </div>
                             ))}
                         </div>
-                        <ul className='col-span-1  '>
+                        <ul className='col-span-1  pb-10'>
                             <h1 className='text-xl font-bold'>Order Summery</h1>
                             <li className='pb-2 text-lg' >Total Items : {cart.itemPrice}</li>
                             <li className='pb-2 text-lg'>Delivery Charge: {cart.shippingPrice}</li>

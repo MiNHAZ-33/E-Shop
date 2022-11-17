@@ -43,6 +43,12 @@ const CartScreen = () => {
     return (
         <div className='container mx-auto lg:mx-5'>
             <br />
+            <ul className="steps items-center justify-center px-10 pb-4">
+                    <li className="step step-info">Added to cart</li>
+                    <li className="step ">Shipping Details</li>
+                    <li className="step">Balance</li>
+                    <li className="step" data-content="?">Pay</li>
+                </ul>
             {cartItems.length === 0 ? <Message message={'Your cart is Empty, buy something'} /> :
                 <div className=" grid grid-cols-5 gap-5">
                     <div className='col-span-3'>
