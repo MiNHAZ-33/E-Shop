@@ -47,10 +47,10 @@ const PlaceOrderScreen = () => {
 
     return (
         <>
-            <div className='lg:px-20'>
-                <h2>Shipping</h2>
+            <div className='lg:px-20 pt-5'>
+                <h2 className='text-xl'>Shipping Location: </h2>
                 <p>
-                    <strong>Address</strong> {cart.shippingAddress.address}, {cart.shippingAddress.city}, {' '} {cart.shippingAddress.postalCode}, {' '}, {cart.shippingAddress.country}
+                    <strong>Address : </strong> {cart.shippingAddress.address}, {cart.shippingAddress.city}, {' '} {cart.shippingAddress.postalCode}, {' '} <br></br> {cart.shippingAddress.country}
                 </p>
                 <br />
                 <h2>Order items</h2>
@@ -58,7 +58,7 @@ const PlaceOrderScreen = () => {
                     <div className=" grid grid-cols-6 gap-5">
                         <div className='col-span-4'>
                             {cart.cartItems.map(item => (
-                                <div className="grid grid-cols-6 gap-2 border-b-2">
+                                <div key={item.name} className="grid grid-cols-6 gap-2 border-b-2">
                                     <img className='h-20 w-20' src={item.image} alt={item.image} />
                                     <h1 className='col-span-2 flex items-center justify-center'>{item.name}</h1>
                                     <h1 className='flex items-center justify-center'>{item.qty} x {item.price} </h1>

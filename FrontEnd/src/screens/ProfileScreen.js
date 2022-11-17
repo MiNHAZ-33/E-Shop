@@ -118,11 +118,14 @@ const ProfileScreen = () => {
                     <h1 className='font-bold py-2'> Enter your token here for recharge</h1>
                     <input type="text" value={token} onChange={(e)=> setToken(e.target.value)} placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
                     <button onClick={rechargeHandler} className='btn px-5 mx-2'> RECHARGE</button>
+                    {loadingRecharge && <Loader />}
+                    {successRecharge && <Message message={'Recharge successfull'} />}
+                    {errorRecharge && <Message message={errorRecharge}/>}
                 </div>
-                <h1 className='text-xl font-bold'>My Orders</h1>
+                <h1 className='text-xl font-bold pt-14 pb-4'>Order History</h1>
                 <div>
                     {orders && orders.map(order => (
-                        <div key={order._id} className="grid grid-cols-6 gap-2 border-b-2">
+                        <div key={order._id} className="grid grid-cols-6 gap-2 border-b-2 h-10">
                             <h1 className='flex items-center justify-center'>{order._id}</h1>
                             <h1 className='flex items-center justify-center'>{order.createdAt.substring(0, 10)}</h1>
                             <h1 className='flex items-center justify-center'>{order.totalPrice}</h1>
