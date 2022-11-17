@@ -11,9 +11,9 @@ const FilteredProduct = () => {
 
 
     return (
-        <>  
+        <>
             <div className='lg:px-20'>
-                <div className=' grid lg:grid-cols-5 md:grid-cols-3  gap-2 flex-col items-center justify-center '>
+                <div className=' grid lg:grid-cols-3 md:grid-cols-2  gap-2 flex-col items-center justify-center '>
                     {products.map((product) => <ProductCard key={product._id} props={product} />)}
                 </div>
             </div>

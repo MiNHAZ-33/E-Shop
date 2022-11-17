@@ -30,13 +30,20 @@ function HomeScreen() {
         <>
             <Slider />
             <p className='lg:px-20 text-xl font-bold'>Today's Hot Deals</p>
-        <div className='lg:px-20'>
-            {loading ? (<Loader />) : error ? (<Message message={error} />) : <div className=' grid lg:grid-cols-5 md:grid-cols-3  gap-2 flex-col items-center justify-center '>
-                {products.map((product) => <ProductCard key={product._id} props={product} />)}
-            </div>}
-            <CategoryName/>
+            <div className='lg:px-20'>
+                {loading ? (<Loader />) : error ? (<Message message={error} />) : <div className=' grid lg:grid-cols-5 md:grid-cols-3  gap-2 flex-col items-center justify-center '>
+                    {products.map((product) => <ProductCard key={product._id} props={product} />)}
+                </div>}
+                <div className='grid grid-cols-4 py-5'>
+                    <div>
+                        <CategoryName />
+                    </div>
+                    <div className='grid col-span-3'>
+
+                        <FilteredProduct />
+                    </div>
+                </div>
             </div>
-            <FilteredProduct/>
         </>
     )
 }
