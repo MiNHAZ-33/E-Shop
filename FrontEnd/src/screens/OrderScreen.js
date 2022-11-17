@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getOrderDetails } from '../actions/orderActions'
+import { getOrderDetails, payOrder } from '../actions/orderActions'
 import { useParams } from 'react-router-dom';
 import Message from '../components/Message'
 import Loader from '../components/Loader';
+import { userPayment } from '../actions/userActions';
 
 const OrderScreen = () => {
     const dispatch = useDispatch();
@@ -12,6 +13,8 @@ const OrderScreen = () => {
 
     const orderDetails = useSelector(state => state.orderDetails);
     const { order, loading, error } = orderDetails;
+    const userDetails = useSelector(state => state.userDetails);
+    const { loading: userLoading, error: userError, user } = userDetails;
     const orderPay = useSelector(state => state.orderPay);
     const { loading: loadingPay, success: successPay, error: errorpay } = orderPay;
 
@@ -21,6 +24,11 @@ const OrderScreen = () => {
             dispatch(getOrderDetails(orderId))
         }
     }, [dispatch, successPay])
+
+    const paymentHandler = () => {
+        dispatch(payOrder(orderId));
+        dispatch(userPayment(user._id, order.totalPrice))
+    }
 
 
     return (
@@ -51,7 +59,7 @@ const OrderScreen = () => {
                             <li>
                                 <div className='grid grid-col-2'>
                                     <p> Payment Status: </p>
-                                    {order.isPaid ? (<Message message={'Paid'} />) : (<button className='btn'>Pay</button>) }
+                                    {order.isPaid ? (<Message message={'Paid'} />) : (<button onClick={paymentHandler} className='btn'>Pay</button>)}
                                 </div>
                                 <div className='grid grid-col-2'>
                                     <p> Delivery Status: </p>
