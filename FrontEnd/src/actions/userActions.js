@@ -1,4 +1,4 @@
-import { USER_DELETE_FAILED, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DETAILS_FAILED, USER_DETAILS_REQUEST, USER_DETAILS_RESET, USER_DETAILS_SUCCESS, USER_EDIT_FAILED, USER_EDIT_REQUEST, USER_EDIT_SUCCESS, USER_GENERATE_TOKEN_FAILED, USER_GENERATE_TOKEN_REQUEST, USER_GENERATE_TOKEN_SUCCESS, USER_LIST_FAILED, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_LOGIN_FAILED, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAILED, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_FAILED, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "../constants/userConstants"
+import { USER_DELETE_FAILED, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DETAILS_FAILED, USER_DETAILS_REQUEST, USER_DETAILS_RESET, USER_DETAILS_SUCCESS, USER_EDIT_FAILED, USER_EDIT_REQUEST, USER_EDIT_SUCCESS, USER_GENERATE_TOKEN_FAILED, USER_GENERATE_TOKEN_REQUEST, USER_GENERATE_TOKEN_SUCCESS, USER_GET_TOKEN_FAILED, USER_GET_TOKEN_REQUEST, USER_GET_TOKEN_SUCCESS, USER_LIST_FAILED, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_LOGIN_FAILED, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAILED, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_FAILED, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "../constants/userConstants"
 import axios from 'axios'
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstant"
 
@@ -14,7 +14,7 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.post('/users/login', {email, password, config})
+        const { data } = await axios.post('/users/login', { email, password, config })
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
@@ -26,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }
@@ -51,7 +51,7 @@ export const register = (name, email, password) => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.post('/users/', {name, email, password, config})
+        const { data } = await axios.post('/users/', { name, email, password, config })
 
         dispatch({
             type: USER_REGISTER_SUCCESS,
@@ -68,7 +68,7 @@ export const register = (name, email, password) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_REGISTER_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }
@@ -89,7 +89,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.get(`/users/${id}`, config)
+        const { data } = await axios.get(`/users/${id}`, config)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -98,7 +98,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: USER_DETAILS_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }
@@ -119,7 +119,7 @@ export const updateUerProfile = (user) => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.put(`/users/profile`, user, config)
+        const { data } = await axios.put(`/users/profile`, user, config)
 
         dispatch({
             type: USER_UPDATE_SUCCESS,
@@ -128,7 +128,7 @@ export const updateUerProfile = (user) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: USER_UPDATE_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }
@@ -148,7 +148,7 @@ export const listUsers = () => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.get(`/users`, config)
+        const { data } = await axios.get(`/users`, config)
 
         dispatch({
             type: USER_LIST_SUCCESS,
@@ -157,7 +157,7 @@ export const listUsers = () => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: USER_LIST_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }
@@ -176,7 +176,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.delete(`/users/${id}`, config)
+        const { data } = await axios.delete(`/users/${id}`, config)
 
         dispatch({
             type: USER_DELETE_SUCCESS,
@@ -184,7 +184,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: USER_DELETE_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }
@@ -204,7 +204,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.put(`/users/${user._id}`, user, config)
+        const { data } = await axios.put(`/users/${user._id}`, user, config)
 
         dispatch({
             type: USER_EDIT_SUCCESS,
@@ -216,7 +216,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: USER_EDIT_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }
@@ -233,7 +233,7 @@ export const generateToken = (balance) => async (dispatch, getState) => {
             headers: {
             }
         }
-         await axios.post(`/users/token`, {balance})
+        await axios.post(`/users/token`, { balance })
         dispatch({
             type: USER_GENERATE_TOKEN_SUCCESS,
             success: true,
@@ -241,7 +241,32 @@ export const generateToken = (balance) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: USER_GENERATE_TOKEN_FAILED,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message 
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
+export const getTokenList = () => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: USER_GET_TOKEN_REQUEST
+        })
+
+        const { userLogin: { userInfo } } = getState();
+
+        const config = {
+            headers: {
+            }
+        }
+        const { data } = await axios.get(`/users/token`)
+        dispatch({
+            type: USER_GET_TOKEN_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: USER_GET_TOKEN_FAILED,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
 }

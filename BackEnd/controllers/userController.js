@@ -162,6 +162,11 @@ const createToken = asyncHandler(async (req, res) => {
     }
 })
 
+const getTokenList = asyncHandler(async (req, res) => {
+    const tokens = await Card.find({});
+    res.json(tokens);
+})
+
 const updateUserBalance = asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id)
     const { token } = req.body;
@@ -191,4 +196,4 @@ const updateUserBalance = asyncHandler(async (req, res) => {
     }
 })
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser, updateUserBalance, createToken }
+export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser, updateUserBalance, createToken, getTokenList }
