@@ -32,35 +32,35 @@ const LoginScreen = () => {
     return (
         <FormContainer>
 
-        <div>
-            {error && <Message message={error} />}
-            {loading && <Loader />}
-            <form onSubmit={submitHandler}>
-                <div className="form-control w-full  ">
-                    <br />
-                    <h1 className='text-3xl'>Sign in</h1>
-                    <br />
-                    <label className="label">
-                        <span className="label-text">Email</span>
-                    </label>
-                    <input type="email" placeholder="Enter your email" className="input input-bordered w-full max-w-xs" onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="form-control w-full ">
-                    <label className="label">
-                        <span className="label-text">Password</span>
+            <div>
+                {error && <Message message={error} />}
+                {loading && <Loader />}
+                <form onSubmit={submitHandler}>
+                    <div className="form-control w-full  ">
+                        <br />
+                        <h1 className='text-3xl'>Sign in</h1>
+                        <br />
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="email" placeholder="Enter your email" className="input input-bordered w-full max-w-xs" onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text">Password</span>
 
-                    </label>
-                    <input type="text" placeholder="Enter your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <div className='py-4 flex justify-center items-center'>
-                    <button type='submit' className=' btn btn-primary w-24'>Login</button>
-                </div>
-                <div>
-                    <h3>Doesn't have any account?  <Link to={redirect ? `/register?redirect=${redirect}` : `/register`}> <strong>Create account</strong> </Link>
-                    </h3>
-                </div>
-            </form>
-        </div>
+                        </label>
+                        <input type="text" placeholder="Enter your password" className="input input-bordered w-full max-w-xs" onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    <div className='py-4 flex justify-center items-center'>
+                        <button type='submit' className=' btn btn-primary w-24'>Login</button>
+                    </div>
+                    <div>
+                        <h3>Doesn't have any account?  <Link to={redirect ? `/register?redirect=${redirect}` : `/register`}> <strong>Create account</strong> </Link>
+                        </h3>
+                    </div>
+                </form>
+            </div>
         </FormContainer>
     )
 }

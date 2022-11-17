@@ -60,6 +60,9 @@ function Header() {
                                     {userInfo && userInfo.isAdmin==="true" && <li>
                                         <Link to={'/admin/orderlist'}>Orders</Link>
                                     </li>}
+                                    {userInfo && userInfo.isAdmin==="true" && <li>
+                                        <Link to={'/admin/token'}>Generate Token</Link>
+                                    </li>}
                                     
                                     <li onClick={logOutHandler}><a>Logout</a></li> 
                                 </ul>

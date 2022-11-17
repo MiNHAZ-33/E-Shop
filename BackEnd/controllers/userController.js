@@ -148,13 +148,18 @@ const updateUser = asyncHandler(async (req, res) => {
 
 const createToken = asyncHandler(async (req, res) => {
     const { balance } = req.body
-    for ( var i = 0; i < 5; i++)
-    {
-        const card = await Card.create({ balance });
-        await card.save();
+
+    try {
+        for (var i = 0; i < 5; i++) {
+            const card = await Card.create({ balance });
+            await card.save();
+        }
+        res.status(200)
+        res.json({ message: 'Token successfully generated' })
+    } catch (error) {
+        res.status(400);
+        throw new Error(error)
     }
-    res.status(200);
-    res.json({ message: '5 tokens are created'})
 })
 
 const updateUserBalance = asyncHandler(async (req, res) => {
@@ -163,8 +168,7 @@ const updateUserBalance = asyncHandler(async (req, res) => {
 
     const tokenValidation = await Card.findById(token);
 
-    if (!tokenValidation)
-    {
+    if (!tokenValidation) {
         res.status(401);
         throw new Error('Card is not valid')
     } else if (!tokenValidation.isUsed) {
