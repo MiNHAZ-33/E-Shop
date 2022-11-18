@@ -41,13 +41,13 @@ const ShippingScreen = () => {
                     <h1 className='text-3xl'>Where to deliver?</h1>
                     <br />
                     <label className="label">
-                        <span className="label-text">Address</span>
+                        <span className="label-text">Area</span>
                     </label>
                     <input type="text" value={address} placeholder="Enter your address" className="input input-bordered w-full max-w-xs" onChange={(e) => setAddress(e.target.value)} />
                 </div>
                 <div className="form-control w-full  ">
                     <label className="label">
-                        <span className="label-text">City</span>
+                        <span className="label-text">Address</span>
                     </label>
                     <input type="text" value={city} placeholder="Enter your City" className="input input-bordered w-full max-w-xs" onChange={(e) => setCity(e.target.value)} />
                 </div>
@@ -60,7 +60,7 @@ const ShippingScreen = () => {
                 </div>
                 <div className="form-control w-full ">
                     <label className="label">
-                        <span className="label-text">Country</span>
+                        <span className="label-text">City</span>
 
                     </label>
                     <input type="text" value={country} placeholder="Enter your country" className="input input-bordered w-full max-w-xs" onChange={(e) => setCountry(e.target.value)} />

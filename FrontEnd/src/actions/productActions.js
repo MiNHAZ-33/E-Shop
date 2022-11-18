@@ -48,7 +48,7 @@ export const productFilter = (category) => async (dispatch) => {
 
         const { data } = await axios.get(`/api/products`);
 
-        const  filtered = data.filter(a => a.category === category);
+        const filtered = data.filter(a => a.category === category);
         dispatch({
             type: PRODUCT_FILTER,
             payload: filtered
@@ -75,7 +75,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-         await axios.delete(`/api/products/${id}`, config)
+        await axios.delete(`/api/products/${id}`, config)
         dispatch({
             type: PRODUCT_DELETE_SUCCESS,
         })
@@ -100,7 +100,7 @@ export const createProduct = () => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        const {data} = await axios.post(`/api/products`, {},  config)
+        const { data } = await axios.post(`/api/products`, {}, config)
         dispatch({
             type: PRODUCT_CREATE_SUCCESS,
             payload: data
@@ -123,16 +123,17 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        const {data} = await axios.put(`/api/products/${product._id}`, product,  config)
+        const { data } = await axios.put(`/api/products/${product._id}`, product, config)
         dispatch({
             type: PRODUCT_UPDATE_SUCCESS,
             success: true,
             payload: data
         })
+        dispatch({ type: PRODUCT_DETAIL_SUCCESS, payload: data })
     } catch (error) {
         dispatch({
             type: PRODUCT_UPDATE_FAILED,
@@ -151,11 +152,11 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
 
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-         await axios.post(`/api/products/${productId}/reviews`, review,  config)
+        await axios.post(`/api/products/${productId}/reviews`, review, config)
         dispatch({
             type: PRODUCT_CREATE_REVIEW_SUCCESS,
             success: true,

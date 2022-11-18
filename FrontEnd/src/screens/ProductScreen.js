@@ -40,7 +40,7 @@ const ProductScreen = () => {
             dispatch({type: PRODUCT_CREATE_REVIEW_RESET})
         }
         dispatch(listProductDetails(match))
-    }, [dispatch, successReview ])
+    }, [dispatch, successReview, errorReview ])
 
     const addToCartHandler = () => {
         history(`/cart/${match}?qty=${qty}`)
@@ -145,6 +145,7 @@ const ProductScreen = () => {
                             </form>
                         ) : <Message message={'You need to be logged in to give review'} />}
                     </div>
+                    {errorReview && <Message message={'You already reviewd this product'}/>}
                 </>}
             <Link to={'/'} className='btn btn-dark'>Back</Link>
         </div>

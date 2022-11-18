@@ -189,10 +189,8 @@ const updateUserBalance = asyncHandler(async (req, res) => {
     } else if (tokenValidation.isUsed) {
         res.status(400);
         throw new Error('Card already used');
-    } else {
-        res.status(401);
-        throw new Error('Card is not valid')
     }
+
     if (user) {
         user.balance = user.balance + tokenValidation.balance;
         tokenValidation.isUsed = true;

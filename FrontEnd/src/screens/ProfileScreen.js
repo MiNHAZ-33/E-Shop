@@ -120,7 +120,7 @@ const ProfileScreen = () => {
                     <input type="text" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
                     <button onClick={rechargeHandler} className='btn px-5 mx-2'> RECHARGE</button>
                     {loadingRecharge && <Loader />}
-                    {successRecharge && <Message message={'Recharge successfull'} />}
+                    {successRecharge && <SuccessMessage message={'Recharge successfull'} />}
                     {errorRecharge && <Message message={errorRecharge} />}
                 </div>
                 <h1 className='text-xl font-bold pt-14 pb-4'>Order History</h1>
