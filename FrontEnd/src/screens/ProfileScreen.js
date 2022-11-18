@@ -78,7 +78,7 @@ const ProfileScreen = () => {
                     <form onSubmit={submitHandler}>
                         <div className="form-control w-full  ">
                             <br />
-                            <h1 className='text-3xl'>{user.isSuperAdmin === "true" ? 'Admin' : user.isAdmin === 'true' ? 'Buyer' : 'User'} Profile </h1>
+                            <h1 className='text-3xl pt-2'>{user.isSuperAdmin === "true" ? 'Admin' : user.isAdmin === 'true' ? 'Buyer' : 'User'} Profile </h1>
                             <br />
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -113,7 +113,7 @@ const ProfileScreen = () => {
             </div>
 
             <div className='col-span-2'>
-                <h1 className='text-xl font-bold'>Account Balance</h1>
+                <h1 className='text-xl font-bold pt-2'>Account Balance</h1>
                 <div className='container py-2 '>
                     <h1 className='text-2xl'> {user.balance} TK </h1>
                     <h1 className='font-bold py-2'> Enter your token here for recharge</h1>

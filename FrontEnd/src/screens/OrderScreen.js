@@ -65,12 +65,12 @@ const OrderScreen = () => {
                             <li className='pb-2 text-lg'>Total Prices : {order.totalPrice} TK</li>
                             <li>
                                 <div className='grid grid-col-2'>
-                                    <p className='font-bold'> Payment Status: </p>
+                                    <p className='font-bold pb-2'> Payment Status: </p>
                                     {order.isPaid ? (<SuccessMessage message={'Paid'} />) : (<button onClick={paymentHandler} className='btn'>Pay</button>)}
                                     {userLoading && loadingPay && <Loader/>}
                                 </div>
                                 <div className='grid grid-col-2'>
-                                    <p> Delivery Status: </p>
+                                    <p className='font-bold py-2'> Delivery Status: </p>
                                     {order.isDelivered ? <Message message={'Delivered'} /> : <Message message={'Not Delivered'} />}
                                 </div>
                             </li>
