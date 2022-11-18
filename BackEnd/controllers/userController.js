@@ -15,6 +15,7 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            isSuperAdmin: user.isSuperAdmin,
             balance: user.balance,
             token: generateToken(user._id)
         })
@@ -32,6 +33,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            isSuperAdmin: user.isSuperAdmin,
             balance: user.balance
         })
     } else {
@@ -56,6 +58,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             name: updatedUser.name,
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
+            balance: user.balance,
+            isSuperAdmin: updatedUser.isSuperAdmin,
             token: generateToken(updatedUser._id)
         })
 
@@ -89,6 +93,7 @@ const registerUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            isSuperAdmin: user.isSuperAdmin,
             balance: user.balance,
             token: generateToken(user._id)
         })
@@ -141,7 +146,9 @@ const updateUser = asyncHandler(async (req, res) => {
             _id: updatedUser.id,
             name: updatedUser.name,
             email: updatedUser.email,
+            balance: user.balance,
             isAdmin: updatedUser.isAdmin,
+            isSuperAdmin: updatedUser.isSuperAdmin
         })
 
     } else {
@@ -182,6 +189,9 @@ const updateUserBalance = asyncHandler(async (req, res) => {
     } else if (tokenValidation.isUsed) {
         res.status(400);
         throw new Error('Card already used');
+    } else {
+        res.status(401);
+        throw new Error('Card is not valid')
     }
     if (user) {
         user.balance = user.balance + tokenValidation.balance;
@@ -193,6 +203,7 @@ const updateUserBalance = asyncHandler(async (req, res) => {
             name: updatedUser.name,
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
+            isSuperAdmin: updatedUser.isSuperAdmin,
             balance: user.balance
         })
     } else {
@@ -213,6 +224,7 @@ const paidUserBalance = asyncHandler(async (req, res) => {
             name: updatedUser.name,
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
+            isSuperAdmin: updatedUser.isSuperAdmin,
             balance: user.balance
         })
     } else {

@@ -62,7 +62,7 @@ const ProfileScreen = () => {
 
     const rechargeHandler = (e) => {
         e.preventDefault();
-        dispatch( rechargeUser(user._id, token))
+        dispatch(rechargeUser(user._id, token))
     }
 
 
@@ -77,7 +77,7 @@ const ProfileScreen = () => {
                     <form onSubmit={submitHandler}>
                         <div className="form-control w-full  ">
                             <br />
-                            <h1 className='text-3xl'>User Profile</h1>
+                            <h1 className='text-3xl'>{user.isSuperAdmin === "true" ? 'Admin' : user.isAdmin === 'true' ? 'Buyer' : 'User'} Profile </h1>
                             <br />
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -116,11 +116,11 @@ const ProfileScreen = () => {
                 <div className='container py-2 '>
                     <h1 className='text-2xl'> {user.balance} TK </h1>
                     <h1 className='font-bold py-2'> Enter your token here for recharge</h1>
-                    <input type="text" value={token} onChange={(e)=> setToken(e.target.value)} placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
+                    <input type="text" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
                     <button onClick={rechargeHandler} className='btn px-5 mx-2'> RECHARGE</button>
                     {loadingRecharge && <Loader />}
                     {successRecharge && <Message message={'Recharge successfull'} />}
-                    {errorRecharge && <Message message={errorRecharge}/>}
+                    {errorRecharge && <Message message={errorRecharge} />}
                 </div>
                 <h1 className='text-xl font-bold pt-14 pb-4'>Order History</h1>
                 <div>
