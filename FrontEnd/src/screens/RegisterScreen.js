@@ -5,6 +5,7 @@ import FormContainer from '../components/FormContainer'
 import { register } from '../actions/userActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import SuccessMessage from '../components/SuccessMessage';
 
 const RegisterScreen = () => {
 
@@ -45,7 +46,7 @@ const RegisterScreen = () => {
         <FormContainer>
 
         <div>
-            {message && <Message message={message} />}
+            {message && <SuccessMessage message={message} />}
             {error && <Message message={error} />}
             {loading && <Loader />}
             <form onSubmit={submitHandler}>

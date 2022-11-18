@@ -5,6 +5,7 @@ import FormContainer from '../components/FormContainer'
 import { generateToken, getTokenList, login } from '../actions/userActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import SuccessMessage from '../components/SuccessMessage';
 
 const TokenScreen = () => {
 
@@ -49,35 +50,35 @@ const TokenScreen = () => {
                         <div className='py-4 flex justify-center items-center'>
                             <button type='submit' className=' btn btn-primary w-24'>Generate</button>
                         </div>
-                        {success && < Message message={`5 tokens of ${balance} taka generated successfully`} />
+                        {success && < SuccessMessage message={`5 tokens of ${balance} taka generated successfully`} />
                         }</form>
                 </div>
             </FormContainer>
             <div className='lg:px-20'>
-            {tokenLoading ? <Loader /> : tokenError ? <Message message={tokenError} /> : <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>Token</th>
-                            <th>Amount</th>
-                            <th>Validity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                {tokenLoading ? <Loader /> : tokenError ? <Message message={tokenError} /> : <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Amount</th>
+                                <th>Validity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        
+
                             {tokens.map(card => (
                                 <tr key={card._id}>
-                                    <td>{  card._id }</td>
-                                    <td>{  card.balance }</td>
-                                    <td>{  !card.isUsed ? 'Valid' : 'Already Used' }</td>
+                                    <td>{card._id}</td>
+                                    <td>{card.balance}</td>
+                                    <td>{!card.isUsed ? 'Valid' : 'Already Used'}</td>
                                     {/* <td>{token.isAdmin ? (<i className='fas fa-check' style={{ color: 'green' }}> </i>) : (<i className='fas fa-items' style={{ color: 'red' }}></i>)}</td> */}
-                                   
+
                                 </tr>
                             ))}
-                    </tbody>
-                </table>
-            </div>}
+                        </tbody>
+                    </table>
+                </div>}
             </div>
         </>
     )

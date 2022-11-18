@@ -6,6 +6,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { listMyOrders } from '../actions/orderActions';
+import SuccessMessage from '../components/SuccessMessage';
 
 const ProfileScreen = () => {
 
@@ -71,7 +72,7 @@ const ProfileScreen = () => {
             <div className=' items-center justify-center'>
                 {message && <Message message={message} />}
                 {error && <Message message={error} />}
-                {success && <Message message={'Profile Updated Successfully'} />}
+                {success && <SuccessMessage message={'Profile Updated Successfully'} />}
                 {loading && <Loader />}
                 <FormContainer>
                     <form onSubmit={submitHandler}>

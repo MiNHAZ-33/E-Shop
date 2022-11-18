@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Message from '../components/Message'
 import Loader from '../components/Loader';
 import { userPayment } from '../actions/userActions';
+import SuccessMessage from '../components/SuccessMessage';
 
 const OrderScreen = () => {
     const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const OrderScreen = () => {
                             <li>
                                 <div className='grid grid-col-2'>
                                     <p className='font-bold'> Payment Status: </p>
-                                    {order.isPaid ? (<Message message={'Paid'} />) : (<button onClick={paymentHandler} className='btn'>Pay</button>)}
+                                    {order.isPaid ? (<SuccessMessage message={'Paid'} />) : (<button onClick={paymentHandler} className='btn'>Pay</button>)}
                                     {userLoading && loadingPay && <Loader/>}
                                 </div>
                                 <div className='grid grid-col-2'>

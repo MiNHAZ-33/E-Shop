@@ -32,7 +32,7 @@ const ProductEditScreen = () => {
 
         if (successUpdate) {
             dispatch({ type: PRODUCT_UPDATE_RESET });
-            history('/admin/productlist')
+            history(`/admin/productlist`)
         } else {
 
             if (!product.name || product._id !== productId) {
@@ -47,7 +47,7 @@ const ProductEditScreen = () => {
                 setDescription(product.description);
             }
         }
-    }, [dispatch, history, productId, product])
+    }, [dispatch, history, successUpdate, productId, product])
 
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0];
@@ -115,7 +115,7 @@ const ProductEditScreen = () => {
                         <label className="label">
                             <span className="label-text">Image</span>
                         </label>
-                        <input type="text" value={image} placeholder="Enter  image url" className="input input-bordered w-full max-w-xs" onChange={(e) => setImage(e.target.value)} />
+                        {/* <input type="text" value={image} placeholder="Enter  image url" className="input input-bordered w-full max-w-xs" onChange={(e) => setImage(e.target.value)} /> */}
                         <input type="file" onChange={uploadFileHandler} className="file-input file-input-bordered file-input-success w-full max-w-xs py-2" />
                     </div>
                     <div className="form-control w-full  ">
