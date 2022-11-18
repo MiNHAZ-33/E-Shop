@@ -60,14 +60,32 @@ const OrderScreen = () => {
                             ))}
                         </div>
                         <ul className='col-span-1  '>
-                            <li className='pb-2 text-lg' >Total Items : {order.orderItems.reduce((acc, item) => acc + item.qty, 0)}</li>
-                            <li className='pb-2 text-lg'>Delivery Charge: {order.shippingPrice}</li>
-                            <li className='pb-2 text-lg'>Total Prices : {order.totalPrice} TK</li>
+                            <div className=" w-80 font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Total Items :</h1>
+                                        <h1>{order.orderItems.reduce((acc, item) => acc + item.qty, 0)}</h1>
+                                    </div>
+                                </button>
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Delivery Charge:</h1>
+                                        <h1>{order.shippingPrice} TK</h1>
+                                    </div>
+                                </button>
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Total Price:</h1>
+                                        <h1>{order.totalPrice} TK</h1>
+                                    </div>
+                                </button>
+
+                            </div>
                             <li>
                                 <div className='grid grid-col-2'>
                                     <p className='font-bold pb-2'> Payment Status: </p>
                                     {order.isPaid ? (<SuccessMessage message={'Paid'} />) : (<button onClick={paymentHandler} className='btn'>Pay</button>)}
-                                    {userLoading && loadingPay && <Loader/>}
+                                    {userLoading && loadingPay && <Loader />}
                                 </div>
                                 <div className='grid grid-col-2'>
                                     <p className='font-bold py-2'> Delivery Status: </p>

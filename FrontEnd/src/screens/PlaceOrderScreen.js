@@ -74,16 +74,42 @@ const PlaceOrderScreen = () => {
                             ))}
                         </div>
                         <ul className='col-span-1  pb-10'>
-                            <h1 className='text-xl font-bold'>Order Summery</h1>
-                            <li className='pb-2 text-lg' >Total Items : {cart.itemPrice}</li>
-                            <li className='pb-2 text-lg'>Delivery Charge: {cart.shippingPrice}</li>
-                            <li className='pb-2 text-lg'>Total Prices : {cart.totalPrice} TK</li>
-                            <li className='pb-2 text-lg'>Your balance : {user.balance} TK</li>
-                            <li className='pb-2 text-lg'>Remaining balance : {remainBalance} TK</li>
-                            {error && <Message message={error} />}
-                            <button type="button" disabled={remainBalance < 0} onClick={placeOrderHandler} className="py-2 px-4 w-full text-center font-medium  border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                                {remainBalance < 0 ? 'Not enough balance' : 'Proceed'}
-                            </button>
+                            <div className=" w-80 font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Items Price :</h1>
+                                        <h1>{cart.itemPrice} TK</h1>
+                                    </div>
+                                </button>
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Delivery Charge:</h1>
+                                        <h1>{cart.shippingPrice} TK</h1>
+                                    </div>
+                                </button>
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Total Price:</h1>
+                                        <h1>{cart.totalPrice} TK</h1>
+                                    </div>
+                                </button>
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Your balance:</h1>
+                                        <h1>{user.balance} TK</h1>
+                                    </div>
+                                </button>
+                                <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                                    <div className='container grid grid-cols-2  gap-4 '>
+                                        <h1>Remaining Balance:</h1>
+                                        <h1>{remainBalance} TK</h1>
+                                    </div>
+                                </button>
+
+                                <button type="button" disabled={remainBalance < 0} onClick={placeOrderHandler} className="py-2 px-4 w-full text-center font-medium  border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                                    Proceed to checkout
+                                </button>
+                            </div>
                         </ul>
                     </div>
                 }
@@ -93,3 +119,13 @@ const PlaceOrderScreen = () => {
 }
 
 export default PlaceOrderScreen
+{/* <h1 className='text-xl font-bold'>Order Summery</h1>
+<li className='pb-2 text-lg' >Total Items : {cart.itemPrice}</li>
+<li className='pb-2 text-lg'>Delivery Charge: {cart.shippingPrice}</li>
+<li className='pb-2 text-lg'>Total Prices : {cart.totalPrice} TK</li>
+<li className='pb-2 text-lg'>Your balance : {user.balance} TK</li>
+<li className='pb-2 text-lg'>Remaining balance : {remainBalance} TK</li>
+{error && <Message message={error} />}
+<button type="button" disabled={remainBalance < 0} onClick={placeOrderHandler} className="py-2 px-4 w-full text-center font-medium  border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+    {remainBalance < 0 ? 'Not enough balance' : 'Proceed'}
+</button> */}
