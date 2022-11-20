@@ -27,10 +27,10 @@ const CategoryName = () => {
             <li><a onClick={() => selectedCategory('Clothes')}>Clothes</a></li>
             <li><a onClick={() => selectedCategory('Headphone')}>Headphone</a></li>
             <li><a onClick={() => selectedCategory('Bike')}>Bike</a></li>
-            <li><a onClick={() => selectedCategory('Bicycle')}>Bicycle</a></li>
+            <li><a onClick={() => selectedCategory('Camera')}>Camera</a></li>
             <li><a onClick={() => selectedCategory('Car')}>Car</a></li>
             <li><a onClick={() => selectedCategory('Sports')}>Sports</a></li>
-            
+{/*             
             <li className="text-xl font-bold">
                 <span>Brand</span>
             </li>
@@ -39,7 +39,7 @@ const CategoryName = () => {
             <li><a onClick={() => selectedBrand('Samsung')}>Samsung</a></li>
             <li><a onClick={() => selectedBrand('Bata')}>Bata</a></li>
             <li><a onClick={() => selectedBrand('Apex')}>Apex</a></li>
-            <li><a onClick={() => selectedBrand('G & G')}>G & G</a></li>
+            <li><a onClick={() => selectedBrand('G & G')}>G & G</a></li> */}
         </ul>
     )
 }

@@ -75,14 +75,14 @@ const CartScreen = () => {
                         <div className=" w-80 font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                             <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                                 <div className='container grid grid-cols-2  gap-4 '>
-                                    <h1>Price :</h1>
+                                    <h1>No. of items :</h1>
                                     <h1>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</h1>
                                 </div>
                             </button>
                             <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                                 <div className='container grid grid-cols-2  gap-4 '>
-                                    <h1>Status :</h1>
-                                    <h1>{cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</h1>
+                                    <h1>price :</h1>
+                                    <h1>{cartItems.reduce((acc, item) => acc + item.qty * item.price, 0)} Taka</h1>
                                 </div>
                             </button>
 

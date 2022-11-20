@@ -70,13 +70,13 @@ const OrderScreen = () => {
                                 <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                                     <div className='container grid grid-cols-2  gap-4 '>
                                         <h1>Delivery Charge:</h1>
-                                        <h1>{order.shippingPrice} TK</h1>
+                                        <h1>{order.shippingPrice} Taka</h1>
                                     </div>
                                 </button>
                                 <button aria-current="true" type="button" class="py-2 px-4 w-full font-medium text-left text-white bg-blue-700 border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                                     <div className='container grid grid-cols-2  gap-4 '>
                                         <h1>Total Price:</h1>
-                                        <h1>{order.totalPrice} TK</h1>
+                                        <h1>{order.totalPrice} Taka</h1>
                                     </div>
                                 </button>
 

@@ -113,15 +113,18 @@ const ProfileScreen = () => {
             </div>
 
             <div className='col-span-2'>
-                <h1 className='text-xl font-bold pt-2'>Account Balance</h1>
-                <div className='container py-2 '>
-                    <h1 className='text-2xl'> {user.balance} TK </h1>
-                    <h1 className='font-bold py-2'> Enter your token here for recharge</h1>
-                    <input type="text" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
-                    <button onClick={rechargeHandler} className='btn px-5 mx-2'> RECHARGE</button>
-                    {loadingRecharge && <Loader />}
-                    {successRecharge && <SuccessMessage message={'Recharge successfull'} />}
-                    {errorRecharge && <Message message={errorRecharge} />}
+                <div className=' mt-2'>
+
+                    <h1 className='text-xl font-bold '>Account Balance</h1>
+                    <div className='container py-2 '>
+                        <h1 className='text-2xl'> {user.balance} Taka </h1>
+                        <h1 className='font-bold py-2'> Enter your token here for recharge</h1>
+                        <input type="text" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Code" className="input input-bordered input-success w-full max-w-xs" />
+                        <button onClick={rechargeHandler} className='btn px-5 mx-2'> RECHARGE</button>
+                        {loadingRecharge && <Loader />}
+                        {successRecharge && <SuccessMessage message={'Recharge successfull'} />}
+                        {errorRecharge && <Message message={errorRecharge} />}
+                    </div>
                 </div>
                 <h1 className='text-xl font-bold pt-14 pb-4'>Order History</h1>
                 <div>
